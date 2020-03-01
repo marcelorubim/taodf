@@ -1,0 +1,17 @@
+image: docker:latest
+services:
+  - docker:dind
+variables:
+  APP_NAME: taodf
+  APP_VERSION: 0.0.1
+  CONTAINER_RELEASE_IMAGE: registry.gitlab.com/marcelorubim/taodf
+release:
+  tags:
+    - docker
+  stage: build
+  script:
+    - docker build -t $CONTAINER_RELEASE_IMAGE .
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
+    - docker push $CONTAINER_RELEASE_IMAGE
+  only:
+    - master
