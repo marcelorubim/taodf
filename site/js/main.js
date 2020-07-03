@@ -8,15 +8,15 @@ jQuery(function($) {
 
 	//#main-slider
 	var slideHeight = $(window).height();
-	$('#home-slider .item').css('height',slideHeight);
+	$('#home-slider .item').css('height','480px');
 
 	$(window).resize(function(){'use strict',
-		$('#home-slider .item').css('height',slideHeight);
+		$('#home-slider .item').css('height','480px');
 	});
 	
 	//Scroll Menu
 	$(window).on('scroll', function(){
-		if( $(window).scrollTop()>slideHeight ){
+		if( $(window).scrollTop()>480){
 			$('.main-nav').addClass('navbar-fixed-top');
 		} else {
 			$('.main-nav').removeClass('navbar-fixed-top');
